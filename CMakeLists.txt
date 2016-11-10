@@ -22,8 +22,6 @@ file(GLOB SOURCE_FILES
 add_library(openmm SHARED ${SOURCE_FILES})
 target_include_directories(openmm
 	PRIVATE
-	olla/include
-	serialization/include
 	platforms/reference/include
 	libraries/asmjit
 	libraries/csha1/include
@@ -37,6 +35,8 @@ target_include_directories(openmm
 	#libraries/validate/include
 	PUBLIC
 	openmmapi/include
+	olla/include
+	serialization/include
 )
 target_compile_definitions(openmm
 	PRIVATE
@@ -47,4 +47,9 @@ target_compile_definitions(openmm
 	IEEE_8087
 	LEPTON_USE_JIT
 	)
-target_compile_options(openmm PRIVATE /wd4267)
+target_compile_options(openmm PUBLIC /wd4267)
+
+install(TARGETS openmm
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        )
