@@ -43,8 +43,8 @@
    #include <sys/sysctl.h>
    #include <dlfcn.h>
 #else
-   #ifdef WIN32
-      #define NOMINMAX
+   #ifdef _WIN32
+      #define NOMINMAX 1
       #include <windows.h>
       #include <intrin.h>
    #else
@@ -65,7 +65,7 @@ static int getNumProcessors() {
     else
        return 1;
 #else
-#ifdef WIN32
+#ifdef _WIN32
     SYSTEM_INFO siSysInfo;
     int ncpu;
     GetSystemInfo(&siSysInfo);

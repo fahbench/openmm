@@ -34,7 +34,7 @@
 #include "openmm/OpenMMException.h"
 #include "openmm/Kernel.h"
 #include "openmm/KernelFactory.h"
-#ifdef WIN32
+#ifdef _WIN32
 #include <windows.h>
 #include <sstream>
 #else
@@ -162,7 +162,7 @@ Platform& Platform::findPlatform(const vector<string>& kernelNames) {
     return *best;
 }
 
-#ifdef WIN32
+#ifdef _WIN32
 static HMODULE loadOneLibrary(const string& file) {
     // Tell Windows not to bother the user with ugly error boxes.
     const UINT oldErrorMode = SetErrorMode(SEM_FAILCRITICALERRORS);
@@ -179,13 +179,13 @@ static HMODULE loadOneLibrary(const string& file) {
 static void initializePlugins(vector<HMODULE>& plugins) {
     for (int i = 0; i < (int) plugins.size(); i++) {
         void (*init)();
-        *(void **)(&init) = GetProcAddress(plugins[i], "registerPlatforms");
+        *(void **)(&init) = (void *)GetProcAddress(plugins[i], "registerPlatforms");
         if (init != NULL)
             (*init)();
     }
     for (int i = 0; i < (int) plugins.size(); i++) {
         void (*init)();
-        *(void **)(&init) = GetProcAddress(plugins[i], "registerKernelFactories");
+        *(void **)(&init) = (void *)GetProcAddress(plugins[i], "registerKernelFactories");
         if (init != NULL)
             (*init)();
     }

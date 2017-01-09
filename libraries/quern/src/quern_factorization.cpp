@@ -5,7 +5,7 @@
 #include "quern.h"
 #include "quern_list.h"
 
-#ifdef _WIN32
+#if defined(_MSC_VER)
 #define copysign _copysign
 #endif
 

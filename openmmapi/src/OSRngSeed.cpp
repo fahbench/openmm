@@ -31,6 +31,7 @@
 
 #if defined(_WIN32) || defined(__CYGWIN__)
 #include <windows.h>
+#include <wincrypt.h>
 static HCRYPTPROV hCryptProv = 0;
 #pragma comment(lib, "advapi32.lib")
 #else

@@ -56,6 +56,7 @@ target_compile_definitions(openmm
 	TIXML_USE_STL
 	IEEE_8087
 	LEPTON_USE_JIT
+	ASMJIT_EMBED
 	)
 if(MSVC)
 	target_compile_definitions(openmm

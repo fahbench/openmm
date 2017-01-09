@@ -29,7 +29,7 @@
  * USE OR OTHER DEALINGS IN THE SOFTWARE.                                     *
  * -------------------------------------------------------------------------- */
 
-#ifdef WIN32
+#ifdef _WIN32
   #define _USE_MATH_DEFINES // Needed to get M_PI
 #endif
 #include "openmm/internal/ContextImpl.h"
