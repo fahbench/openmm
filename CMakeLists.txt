@@ -27,24 +27,23 @@ endif()
 
 add_library(openmm SHARED ${SOURCE_FILES})
 target_include_directories(openmm
-	PRIVATE
+	PUBLIC
 	platforms/reference/include
 	libraries/asmjit
 	libraries/csha1/include
 	libraries/hilbert/include
 	libraries/jama/include
 	libraries/lbfgs/include
-	libraries/lepton/include
 	libraries/quern/include
 	libraries/sfmt/include
-	PUBLIC
 	openmmapi/include
 	olla/include
 	serialization/include
+	libraries/lepton/include
 )
 if(MSVC)
 	target_include_directories(openmm
-							   PRIVATE
+							   PUBLIC
 							   libraries/pthreads/include
 							   )
 endif()
@@ -53,10 +52,10 @@ target_compile_definitions(openmm
 	PRIVATE
 	OPENMM_BUILDING_SHARED_LIBRARY
 	LEPTON_BUILDING_SHARED_LIBRARY
+	PUBLIC
 	TIXML_USE_STL
 	IEEE_8087
 	LEPTON_USE_JIT
-	ASMJIT_EMBED
 	)
 if(MSVC)
 	target_compile_definitions(openmm
@@ -69,6 +68,8 @@ endif()
 if(MSVC)
     target_compile_options(openmm PUBLIC /wd4267)
 endif()
+
+add_subdirectory(platforms/opencl)
 
 install(TARGETS openmm
         RUNTIME DESTINATION bin
