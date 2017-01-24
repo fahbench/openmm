@@ -300,7 +300,7 @@ const string& Platform::getDefaultPluginsDirectory() {
 #define STRING(x) STRING1(x)
 
 const string& Platform::getOpenMMVersion() {
-    static const string version = STRING(OPENMM_MAJOR_VERSION) "." STRING(OPENMM_MINOR_VERSION) "-" STRING(OPENMM_FAH_VERSION);
+	static const string version = "6.2 FAH Core 0x21 v0.0.17";
     return version;
 }
 
