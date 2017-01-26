@@ -28,5 +28,10 @@ target_compile_definitions(openmm-opencl
 	OPENMM_OPENCL_BUILDING_SHARED_LIBRARY
 	)
 
+if(${WIN32})
 set_property(TARGET openmm-opencl
 	PROPERTY RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>/openmm")
+else()
+	set_property(TARGET openmm-opencl
+				 PROPERTY LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/openmm")
+endif()

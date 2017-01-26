@@ -26,6 +26,9 @@ if(MSVC)
 endif()
 
 add_library(openmm SHARED ${SOURCE_FILES})
+if(${UNIX})
+	target_link_libraries(openmm pthread)
+endif()
 target_include_directories(openmm
 	PUBLIC
 	platforms/reference/include
