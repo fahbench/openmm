@@ -1,7 +1,5 @@
 ## OpenMM: A High Performance Molecular Dynamics Library
 
-[![Build Status](https://travis-ci.org/pandegroup/openmm.png?branch=master)](https://travis-ci.org/pandegroup/openmm)
-
 Introduction
 ------------
 
