@@ -35,3 +35,9 @@ else()
 	set_property(TARGET openmm-opencl
 				 PROPERTY LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/openmm")
 endif()
+
+if(${WIN32})
+install(TARGETS openmm-opencl RUNTIME DESTINATION openmm)
+else()
+install(TARGETS openmm-opencl LIBRARY DESTINATION lib/openmm)
+endif()

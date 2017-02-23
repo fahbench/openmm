@@ -74,7 +74,8 @@ endif()
 
 add_subdirectory(platforms/opencl)
 
-install(TARGETS openmm
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        )
+if(${WIN32})
+install(TARGETS openmm RUNTIME DESTINATION .)
+else()
+install(TARGETS openmm LIBRARY DESTINATION lib)
+endif()
