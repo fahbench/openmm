@@ -73,6 +73,7 @@ if(MSVC)
 endif()
 
 add_subdirectory(platforms/opencl)
+add_subdirectory(platforms/cpu)
 
 if(${WIN32})
 install(TARGETS openmm RUNTIME DESTINATION .)
