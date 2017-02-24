@@ -10,6 +10,9 @@ target_include_directories(openmm-cpu
     src
 )
 target_compile_definitions(openmm-cpu PRIVATE OPENMM_CPU_BUILDING_SHARED_LIBRARY)
+if(${UNIX})
+target_compile_options(openmm-cpu PUBLIC -msse4.1)
+endif()
 
 if(${WIN32})
 set_property(TARGET openmm-cpu
